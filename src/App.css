@@ -1,0 +1,13 @@
+.opacity-25 {
+  opacity: 0.25;
+}
+
+.bg-\[\#A234FD\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(162 52 253 / var(--tw-bg-opacity, 1));
+}
+
+.rounded-t-full {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}

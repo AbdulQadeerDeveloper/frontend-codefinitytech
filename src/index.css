@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Class-based dark/light toggle (independent of OS preference) */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+/* Apply Montserrat globally */
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Marquee animation for CounterSection background text */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.opacity-25 {
+  opacity: 0.25;
+}
+
+.bg-\[\#A234FD\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(162 52 253 / var(--tw-bg-opacity, 1));
+}
+
+.rounded-t-full {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.logo-small {
+  max-width: 200px;
+  height: 20px;
+}
