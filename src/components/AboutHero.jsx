@@ -119,10 +119,10 @@ const AboutPage = () => {
         </div>
       </section>
       {/* Bottom Curved Bars */}
-      <div className="absolute bottom-[62px] left-0 w-full flex flex-col items-center">
-        <div className="w-[90%] self-center bg-[#A234FD] rounded-t-full h-10 absolute -bottom-10 rotate-180 opacity-25"></div>
-        <div className="w-[80%] self-center bg-[#5D00F7] rounded-t-full h-14 absolute -bottom-14 rotate-180 opacity-25"></div>
-      </div>
+     <div className="absolute bottom-[-147px] md:bottom-[62px] left-0 w-full flex flex-col items-center">
+  <div className="w-[90%] self-center bg-[#A234FD] rounded-t-full h-10 absolute -bottom-10 rotate-180 opacity-25"></div>
+  <div className="w-[80%] self-center bg-[#5D00F7] rounded-t-full h-14 absolute -bottom-14 rotate-180 opacity-25"></div>
+</div>
     </div>
   );
 };

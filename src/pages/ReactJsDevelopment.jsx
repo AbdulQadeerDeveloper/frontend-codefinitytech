@@ -91,7 +91,7 @@ export default function ReactJsDevelopment() {
         </div>
 
         {/* Bottom Curved Bars */}
-        <div className="absolute bottom-[-35px] left-0 w-full flex flex-col items-center pointer-events-none">
+        <div className="absolute bottom-[-76px] md:bottom-[-35px] left-0 w-full flex flex-col items-center pointer-events-none">
           <div className="w-[90%] bg-[#A234FD] rounded-t-full h-10 opacity-25"></div>
           <div className="w-[80%] bg-[#5D00F7] rounded-t-full h-14 mt-[-20px] opacity-25"></div>
         </div>
