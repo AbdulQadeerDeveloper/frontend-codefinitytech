@@ -124,36 +124,71 @@ export default function Footer() {
                 Backend Development
               </Link>
             </li>
+            <li>
+              <Link
+                to="/services/odoo-development"
+                className="hover:text-purple-400 transition"
+              >
+                Odoo Development ERP System
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Contact + Socials */}
         <div className="flex-1">
-          <h3 className="text-purple-500 font-semibold mb-3 md:mb-4 text-sm md:text-base">
-            Contact
-          </h3>
-          <p className="text-gray-300 text-sm md:text-base mb-1 md:mb-2">
-            123 Tech Park, Innovation City, PK
+          <h3 className="text-purple-500 font-semibold mb-4">Contact</h3>
+
+          <p className="text-gray-300 text-sm mb-2">
+            H-3 Block, Office No. 1, Near Jinnah Library, Trust Plaza, Gujranwala
           </p>
-          <p className="text-gray-300 text-sm md:text-base mb-1 md:mb-2">
-            Email: info@codefinitytech.com
+
+          <p className="text-gray-300 text-sm mb-2">
+            Email:{" "}
+            <a href="mailto:qadeerdeveloper312@gmail.com" className="hover:text-purple-400">
+              qadeerdeveloper312@gmail.com
+            </a>
           </p>
-          <p className="text-gray-300 text-sm md:text-base mb-3 md:mb-4">
-            Phone: +92 317 0704493
+
+          <p className="text-gray-300 text-sm mb-4">
+            Phone:{" "}
+            <a href="tel:+923170704493" className="hover:text-purple-400">
+              +92 317 0704493
+            </a>
           </p>
-          <div className="flex gap-2 md:gap-4 text-sm md:text-base">
-            <a href="#" className="hover:text-purple-400 transition">
+
+          {/* Social Icons */}
+          <div className="flex gap-4 text-lg">
+
+            <a
+              href="https://www.facebook.com/share/19HTAjwpuC/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#1877F2] hover:scale-110"
+            >
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-purple-400 transition">
+
+            <a
+              href="https://www.instagram.com/mehar_abdulqadeer_11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#E4405F] hover:scale-110"
+            >
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-purple-400 transition">
+
+            <a
+              href="https://www.linkedin.com/in/muhammad-qadeer-62518a214"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#0A66C2] hover:scale-110"
+            >
               <FaLinkedinIn />
             </a>
-            <a href="#" className="hover:text-purple-400 transition">
-              <FaTwitter />
-            </a>
+
+           
+
           </div>
         </div>
       </div>

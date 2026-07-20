@@ -44,7 +44,7 @@ const Hero = () => {
               </button>
 
               <p className="text-[#A234FD] font-semibold text-lg mt-2 sm:mt-0">
-                500+{" "}
+                200+{" "}
                 <span className="text-white font-normal">
                   Projects Completed
                 </span>
@@ -65,7 +65,7 @@ const Hero = () => {
 
               <div className="w-[260px] space-y-3 text-center md:text-left">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#D700FA] via-[#6800EE] to-[#3C0D5A]">
-                  500+
+                  200+
                 </h2>
                 <h4 className="text-base md:text-lg uppercase font-semibold text-[#A234FD]">
                   Projects Delivered

@@ -7,7 +7,7 @@ export default function StatsBar() {
       <div className="bg-gradient-to-r from-[#3d0072] via-[#22003d] to-[#7a00b4] rounded-2xl py-10 px-6 md:px-14 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0">
         {/* Stat 1: Projects Completed */}
         <StatBox
-          number="500+"
+          number="200+"
           label="Projects Completed"
           icon={<CheckCircle className="w-8 h-8 text-[#d946ef]" />}
         />

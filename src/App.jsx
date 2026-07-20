@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -37,10 +38,10 @@ import TermsConditions from "./pages/TermsConditions";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./context/AuthContext";
+import OdooServiceDetail from './pages/OdooServiceDetail';
 
 // =============================
 // WRAPPER COMPONENT
-// (Detects route change & shows loader)
 // =============================
 function AppWrapper() {
   const location = useLocation();
@@ -48,61 +49,41 @@ function AppWrapper() {
 
   useEffect(() => {
     setLoading(true);
-
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 700); // loader duration
-
+    }, 700);
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return (
     <>
       {loading && <GlobalLoader />}
-
       <Header />
-
       <main className="flex-1 bg-white">
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* Services */}
+          {/* Services - Specific routes first, then dynamic */}
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/mui" element={<MUIService />} />
           <Route path="/services/tailwind-ui" element={<TailwindUIService />} />
-          <Route
-            path="/services/react-bootstrap"
-            element={<ServicesReactBootstrap />}
-          />
-          <Route
-            path="/services/backend-development"
-            element={<BackendDevelopment />}
-          />
+          <Route path="/services/react-bootstrap" element={<ServicesReactBootstrap />} />
+          <Route path="/services/backend-development" element={<BackendDevelopment />} />
           <Route path="/services/chakra-ui" element={<ChakraUIService />} />
-          <Route
-            path="/services/fullstack-development"
-            element={<FullstackDevelopment />}
-          />
-          <Route
-            path="/services/web-application"
-            element={<WebApplicationDevelopment />}
-          />
-          <Route
-            path="/services/frontend-development"
-            element={<FrontendDevelopment />}
-          />
-          <Route
-            path="/services/nextjs-development"
-            element={<NextJsDevelopment />}
-          />
-          <Route
-            path="/services/reactjs-development"
-            element={<ReactJsDevelopment />}
-          />
+          <Route path="/services/fullstack-development" element={<FullstackDevelopment />} />
+          <Route path="/services/web-application" element={<WebApplicationDevelopment />} />
+          <Route path="/services/frontend-development" element={<FrontendDevelopment />} />
+          <Route path="/services/nextjs-development" element={<NextJsDevelopment />} />
+          <Route path="/services/reactjs-development" element={<ReactJsDevelopment />} />
+          
+          {/* Odoo Development - specific route */}
+          <Route path="/services/odoo-development" element={<OdooServiceDetail />} />
+          
+          {/* Dynamic service route - this must come LAST */}
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
 
           {/* Projects */}
-          <Route path="//ProjectsPage" element={<ProjectsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
 
           {/* Blogs */}
@@ -120,7 +101,6 @@ function AppWrapper() {
           <Route path="/terms-and-conditions" element={<TermsConditions />} />
         </Routes>
       </main>
-
       <Footer />
       <LiveChatWidget />
     </>

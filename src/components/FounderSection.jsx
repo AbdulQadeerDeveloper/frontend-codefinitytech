@@ -120,7 +120,7 @@ export default function FounderSection() {
               <FaGithub />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/muhammad-qadeer-62518a214"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -128,15 +128,7 @@ export default function FounderSection() {
             >
               <FaLinkedinIn />
             </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#dc00f9]/20 hover:border-[#dc00f9] transition"
-            >
-              <FaTwitter />
-            </a>
+           
             <a
               href="mailto:qadeerdeveloper312@gmail.com"
               aria-label="Email"

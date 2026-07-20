@@ -101,7 +101,7 @@ const AboutPage = () => {
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-[#1A0F2F] p-8 rounded-2xl shadow-lg border border-[#C724FF]/20">
             <CheckCircle className="mx-auto mb-4 w-10 h-10 text-[#C724FF]" />
-            <h3 className="text-3xl font-bold text-white">500+</h3>
+            <h3 className="text-3xl font-bold text-white">200+</h3>
             <p className="text-gray-300">Projects Completed</p>
           </div>
 

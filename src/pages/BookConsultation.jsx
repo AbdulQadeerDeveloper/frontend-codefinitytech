@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { FaCheckCircle, FaClock, FaVideo } from "react-icons/fa";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from "lucide-react";
-import api from "../api/client";
 
 const TIME_SLOTS = [
   "09:00 AM",
@@ -21,19 +20,12 @@ const MEETING_TYPES = [
 ];
 
 const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
 ];
+
+// Google Apps Script URL - Replace with your actual URL
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1vzBQV4Bk9BTMHw1zNTgCDt-nSCJlGTxMq8ENz3W2zeIHtnor1zd__iLXoLH7Grkc/exec";
 
 function getMonthMatrix(year, month) {
   const firstDay = new Date(year, month, 1);
@@ -57,6 +49,9 @@ export default function BookConsultation() {
 
   const [form, setForm] = useState({ name: "", email: "", phone: "", notes: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [meetLink, setMeetLink] = useState(null);
 
   const cells = useMemo(() => getMonthMatrix(viewYear, viewMonth), [viewYear, viewMonth]);
 
@@ -74,6 +69,7 @@ export default function BookConsultation() {
 
   const goPrevMonth = () => {
     setSelectedDate(null);
+    setSelectedTime(null);
     if (viewMonth === 0) {
       setViewMonth(11);
       setViewYear((y) => y - 1);
@@ -84,6 +80,7 @@ export default function BookConsultation() {
 
   const goNextMonth = () => {
     setSelectedDate(null);
+    setSelectedTime(null);
     if (viewMonth === 11) {
       setViewMonth(0);
       setViewYear((y) => y + 1);
@@ -96,45 +93,63 @@ export default function BookConsultation() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const [meetLink, setMeetLink] = useState(null);
-
   const generateMeetId = () => {
-    // Google Meet style id: xxx-yyyy-zzz (lowercase letters)
     const chars = "abcdefghijklmnopqrstuvwxyz";
     const part = (len) =>
       Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
     return `${part(3)}-${part(4)}-${part(3)}`;
   };
 
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedDate || !selectedTime || !form.name || !form.email) return;
+    
+    if (!selectedDate || !selectedTime || !form.name || !form.email) {
+      setSubmitError("Please fill in all required fields");
+      return;
+    }
+
     setSubmitting(true);
     setSubmitError("");
+
     try {
-      // NOTE: This generates a Meet-style link locally so every booking gets a
-      // unique, shareable ID without needing Google Calendar API credentials.
-      // To create a REAL Google Meet event automatically, this would need a
-      // backend calling the Google Calendar API (OAuth + service account).
+      const selectedService = MEETING_TYPES.find((m) => m.id === meetingType);
+      const formattedDate = `${MONTH_NAMES[viewMonth]} ${selectedDate}, ${viewYear}`;
+      
+      // Generate meeting link locally
       const link = `https://meet.google.com/${generateMeetId()}`;
 
-      await api.post("/consultations", {
+      const payload = {
         name: form.name,
         email: form.email,
-        phone: form.phone,
-        service: MEETING_TYPES.find((m) => m.id === meetingType)?.label,
-        projectDetails: `${form.notes || ""}\n\nMeeting link: ${link}`.trim(),
-        preferredDate: new Date(viewYear, viewMonth, selectedDate),
+        phone: form.phone || "Not provided",
+        service: `${selectedService.label} (${selectedService.duration})`,
+        projectDetails: form.notes || "No details provided",
+        preferredDate: formattedDate,
         preferredTime: selectedTime,
+        meetingLink: link,
+        timestamp: new Date().toISOString()
+      };
+
+      // Use FormData for the request
+      const formData = new FormData();
+      Object.keys(payload).forEach((key) => {
+        formData.append(key, payload[key]);
       });
 
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Add this for CORS issues
+        body: formData,
+      });
+
+      // With no-cors, we can't read the response, so we assume success
+      // The actual response will be handled by the Apps Script
       setMeetLink(link);
       setSubmitted(true);
+      
     } catch (err) {
-      setSubmitError(err?.response?.data?.message || "Something went wrong. Please try again.");
+      console.error("Submission error:", err);
+      setSubmitError("Something went wrong. Please try again or contact support.");
     } finally {
       setSubmitting(false);
     }
@@ -277,7 +292,10 @@ export default function BookConsultation() {
                     type="button"
                     key={idx}
                     disabled={!day || disabled}
-                    onClick={() => setSelectedDate(day)}
+                    onClick={() => {
+                      setSelectedDate(day);
+                      setSelectedTime(null);
+                    }}
                     className={`aspect-square rounded-lg text-sm flex items-center justify-center transition
                       ${!day ? "invisible" : ""}
                       ${
@@ -346,7 +364,7 @@ export default function BookConsultation() {
             )}
 
             <div>
-              <label className="text-sm text-gray-300 light:text-[#4a3b63]">Name</label>
+              <label className="text-sm text-gray-300 light:text-[#4a3b63]">Name *</label>
               <input
                 type="text"
                 name="name"
@@ -359,7 +377,7 @@ export default function BookConsultation() {
             </div>
 
             <div>
-              <label className="text-sm text-gray-300 light:text-[#4a3b63]">Email</label>
+              <label className="text-sm text-gray-300 light:text-[#4a3b63]">Email *</label>
               <input
                 type="email"
                 name="email"

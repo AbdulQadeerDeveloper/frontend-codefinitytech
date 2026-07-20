@@ -24,58 +24,230 @@ const PricingPage = () => {
     "/images/imgi_13_ServicesCardBg-3.png",
   ];
 
-  const websiteTypes = [
-    {
-      type: "Business Website",
-      pages: "3–10",
-      features: ["Info Pages", "Contact Form", "SEO Optimized"],
-      tech: "React + Node + MongoDB",
-      price: "25,000 PKR",
-      recommended: true,
-    },
-    {
-      type: "E-commerce Website",
-      pages: "5–50",
-      features: ["Cart & Checkout", "Payments Integration", "Admin Panel"],
-      tech: "React + Node + MongoDB + Stripe",
-      price: "100,000 PKR",
-    },
-    {
-      type: "Portfolio Website",
-      pages: "1–5",
-      features: ["Project Showcase", "Contact Form"],
-      tech: "React + Next + Firebase",
-      price: "20,000 PKR",
-    },
-    {
-      type: "SaaS Web App",
-      pages: "Dynamic",
-      features: ["Dashboards", "Authentication", "APIs"],
-      tech: "React + Node + PostgreSQL",
-      price: "250,000 PKR",
-    },
-    {
-      type: "Blog / News Site",
-      pages: "Dynamic",
-      features: ["Articles", "CMS Integration"],
-      tech: "Next + Strapi + MongoDB",
-      price: "50,000 PKR",
-    },
-    {
-      type: "LMS Website",
-      pages: "Dynamic",
-      features: ["Courses", "Quizzes", "Progress Tracking"],
-      tech: "React + Node + PostgreSQL",
-      price: "150,000 PKR",
-    },
-    {
-      type: "Social Networking App",
-      pages: "Dynamic",
-      features: ["Profiles", "Messaging", "Real-Time Updates"],
-      tech: "React + Node + WebSockets + MongoDB",
-      price: "300,000 PKR",
-    },
-  ];
+ // servicesData.js - Updated with Multi-Vendor System
+
+ const websiteTypes = [
+  // ============================================
+  // 1. MULTI-VENDOR MARKETPLACE (NEW)
+  // ============================================
+  {
+    type: "Multi-Vendor Marketplace",
+    pages: "Dynamic",
+    features: [
+      "Multiple Vendor Stores",
+      "Product Management",
+      "Order Management",
+      "Vendor Dashboard",
+      "Commission System",
+      "Reviews & Ratings",
+      "Payment Split",
+      "Admin Panel"
+    ],
+    tech: "Nextjs + Node + MongoDB + Stripe Connect",
+    price: "200,000 PKR",
+    recommended: true,
+  },
+  // ============================================
+  // 2. E-commerce Marketplace
+  // ============================================
+  {
+    type: "E-commerce Marketplace",
+    pages: "Dynamic",
+    features: ["Multi-vendor", "Cart & Checkout", "Payment Gateway", "Admin Dashboard"],
+    tech: "React + Node + MongoDB + Stripe",
+    price: "150,000 PKR",
+  },
+  // ============================================
+  // 3. Tour Booking System
+  // ============================================
+  {
+    type: "Tour Booking System",
+    pages: "Dynamic",
+    features: ["Tour Browse", "Date Selection", "Online Booking", "Payment Integration"],
+    tech: "React + Node + MongoDB + Payment Gateway",
+    price: "100,000 PKR",
+  },
+  // ============================================
+  // 4. Learning Management System (LMS)
+  // ============================================
+  {
+    type: "Learning Management System (LMS)",
+    pages: "Dynamic",
+    features: ["Course Upload", "Video Streaming", "Progress Tracking", "Quiz System"],
+    tech: "React + Node + PostgreSQL + Video API",
+    price: "80,000 PKR",
+  },
+  // ============================================
+  // 5. Job Portal Website
+  // ============================================
+  {
+    type: "Job Portal Website",
+    pages: "Dynamic",
+    features: ["Job Posting", "Resume Upload", "Recruiter Dashboard", "Apply System"],
+    tech: "React + Node + MongoDB + Resume Parser",
+    price: "90,000 PKR",
+  },
+  // ============================================
+  // 6. Social Media Platform
+  // ============================================
+  {
+    type: "Social Media Platform",
+    pages: "Dynamic",
+    features: ["Posts Sharing", "Like/Comment", "Friend System", "Real-time Updates"],
+    tech: "React + Node + WebSockets + MongoDB",
+    price: "180,000 PKR",
+  },
+  // ============================================
+  // 7. Real Estate Platform
+  // ============================================
+  {
+    type: "Real Estate Platform",
+    pages: "Dynamic",
+    features: ["Property Listing", "Advanced Filters", "Agent Dashboard", "Image Gallery"],
+    tech: "React + Node + MongoDB + Map Integration",
+    price: "120,000 PKR",
+  },
+  // ============================================
+  // 8. Food Delivery App
+  // ============================================
+  {
+    type: "Food Delivery App",
+    pages: "Dynamic",
+    features: ["Restaurant Listing", "Order System", "Delivery Tracking", "Reviews"],
+    tech: "React Native + Node + MongoDB + Maps",
+    price: "150,000 PKR",
+  },
+  // ============================================
+  // 9. Doctor Appointment System
+  // ============================================
+  {
+    type: "Doctor Appointment System",
+    pages: "Dynamic",
+    features: ["Doctor Profiles", "Schedule Management", "Booking System", "Patient Records"],
+    tech: "React + Node + PostgreSQL + Calendar API",
+    price: "100,000 PKR",
+  },
+  // ============================================
+  // 10. SaaS Dashboard App
+  // ============================================
+  {
+    type: "SaaS Dashboard App",
+    pages: "Dynamic",
+    features: ["Analytics Dashboard", "CRM Tools", "Reports", "Data Visualization"],
+    tech: "React + Node + PostgreSQL + Charts",
+    price: "140,000 PKR",
+  },
+  // ============================================
+  // 11. Portfolio Website Builder
+  // ============================================
+  {
+    type: "Portfolio Website Builder",
+    pages: "Dynamic",
+    features: ["Template Selection", "Customization", "Drag & Drop", "Live Preview"],
+    tech: "React + Node + MongoDB + Drag & Drop",
+    price: "80,000 PKR",
+  },
+  // ============================================
+  // 12. Blogging Platform
+  // ============================================
+  {
+    type: "Blogging Platform",
+    pages: "Dynamic",
+    features: ["Article Writing", "Publish System", "SEO Optimization", "Comments"],
+    tech: "Next.js + Node + MongoDB + SEO Tools",
+    price: "60,000 PKR",
+  },
+  // ============================================
+  // 13. Chat Application
+  // ============================================
+  {
+    type: "Chat Application",
+    pages: "Dynamic",
+    features: ["Real-time Messaging", "Group Chats", "File Sharing", "Voice/Video"],
+    tech: "React + Node + Socket.io + WebRTC",
+    price: "130,000 PKR",
+  },
+  // ============================================
+  // 14. Event Management System
+  // ============================================
+  {
+    type: "Event Management System",
+    pages: "Dynamic",
+    features: ["Event Creation", "Ticket Selling", "RSVP", "Booking System"],
+    tech: "React + Node + MongoDB + QR Codes",
+    price: "85,000 PKR",
+  },
+  // ============================================
+  // 15. Online Auction System
+  // ============================================
+  {
+    type: "Online Auction System",
+    pages: "Dynamic",
+    features: ["Bidding System", "Real-time Updates", "Auto-bidding", "Winner Selection"],
+    tech: "React + Node + WebSockets + MongoDB",
+    price: "160,000 PKR",
+  },
+  // ============================================
+  // 16. Subscription-based Platform
+  // ============================================
+  {
+    type: "Subscription-based Platform",
+    pages: "Dynamic",
+    features: ["Monthly Subscription", "Content Access", "Payment Recurring", "User Management"],
+    tech: "React + Node + PostgreSQL + Stripe",
+    price: "120,000 PKR",
+  },
+  // ============================================
+  // 17. Fitness Tracker App
+  // ============================================
+  {
+    type: "Fitness Tracker App",
+    pages: "Dynamic",
+    features: ["Workout Tracking", "Progress Charts", "Activity Logs", "Goals Setting"],
+    tech: "React Native + Node + MongoDB + Charts",
+    price: "100,000 PKR",
+  },
+  // ============================================
+  // 18. Inventory Management System
+  // ============================================
+  {
+    type: "Inventory Management System",
+    pages: "Dynamic",
+    features: ["Stock Management", "Reports", "Analytics", "Supplier Management"],
+    tech: "React + Node + PostgreSQL + Excel Export",
+    price: "110,000 PKR",
+  },
+  // ============================================
+  // 19. Freelance Marketplace
+  // ============================================
+  {
+    type: "Freelance Marketplace",
+    pages: "Dynamic",
+    features: ["Service Listing", "Hire System", "Reviews", "Payment Escrow"],
+    tech: "React + Node + MongoDB + Stripe Connect",
+    price: "160,000 PKR",
+  },
+  // ============================================
+  // 20. Online Quiz / Exam System
+  // ============================================
+  {
+    type: "Online Quiz / Exam System",
+    pages: "Dynamic",
+    features: ["Quiz Creation", "Automated Results", "Scoring", "Certificate"],
+    tech: "React + Node + PostgreSQL + Timer",
+    price: "70,000 PKR",
+  },
+  // ============================================
+  // 21. AI-based Web App
+  // ============================================
+  {
+    type: "AI-based Web App",
+    pages: "Dynamic",
+    features: ["AI Chatbot", "Content Generator", "Recommendation System"],
+    tech: "React + Node + MongoDB + OpenAI API",
+    price: "200,000 PKR",
+  },
+];
 
   return (
     <div className="w-full text-white bg-[#0B0713]">

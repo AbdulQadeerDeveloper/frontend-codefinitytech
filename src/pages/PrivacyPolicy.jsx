@@ -43,7 +43,7 @@ const sections = [
   },
   {
     title: "11. Contact Us",
-    body: `If you have any questions about this Privacy Policy or how we handle your data, please contact us at info@codefinitytech.com or +92 317 0704493.`,
+    body: `If you have any questions about this Privacy Policy or how we handle your data, please contact us at qadeerdeveloper312@gmail.com or +92 317 0704493.`,
   },
 ];
 

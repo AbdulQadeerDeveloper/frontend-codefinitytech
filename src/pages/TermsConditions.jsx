@@ -47,7 +47,7 @@ const sections = [
   },
   {
     title: "12. Contact Us",
-    body: `If you have any questions about these Terms & Conditions, please contact us at info@codefinitytech.com or +92 317 0704493.`,
+    body: `If you have any questions about these Terms & Conditions, please contact us at qadeerdeveloper312@gmail.com or +92 317 0704493.`,
   },
 ];
 
