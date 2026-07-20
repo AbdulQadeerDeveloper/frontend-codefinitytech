@@ -33,7 +33,7 @@ const AUTO_REPLIES = [
   // Contact related
   {
     keywords: ["contact", "email", "phone", "reach", "number", "whatsapp"],
-    reply: "📱 You can reach us anytime at contact@codefinitytech.com. Call us at +92-XXX-XXXXXXX, or use our Contact page form. We also have WhatsApp support for quick queries. Our team typically responds within a few hours."
+    reply: "📱 You can reach us anytime at qadeerdeveloper312@gmail.com. Call us at +92 317 0704493, or use our Contact page form. We also have WhatsApp support for quick queries. Our team typically responds within a few hours."
   },
   
   // Working hours

@@ -111,10 +111,31 @@ const Navbar = () => {
             </button>
           </a>
 
-         
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark / light mode"
+            className="p-2 rounded-full border border-[#A234FD]/40 hover:bg-[#A234FD]/20 transition"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </nav>
 
-       
+        {/* Mobile: theme toggle + menu button */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark / light mode"
+            className="p-2 rounded-full border border-[#A234FD]/40"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none"
+          >
+            {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}
