@@ -96,6 +96,30 @@ export default function HomeProjects() {
       tech: ["React", "Bootstrap", "Node.js", "MongoDB"],
       screenshots: ["/images/httpschedmed.ma.png"],
     },
+    {
+      id: "yourtourproviders",
+      title: "YourTourProviders",
+      desc: "A comprehensive multi-vendor tour and travel management platform connecting travelers with verified tour operators. Features real-time booking, vendor dashboards, admin panel, and secure payment integration.",
+      img: "/personal/listing-home.png",
+      live: "https://www.yourtourproviders.com",
+      tech: [
+        "Next.js",
+        "JavaScript",
+        "Tailwind CSS",
+        "Node.js",
+        "MongoDB",
+        "Cloudinary",
+        "MERN Stack",
+        "Multi-Vendor System"
+      ],
+      screenshots: ["/personal/listing-home.png"],
+      features: [
+        "Multi-Vendor Marketplace",
+        "Vendor Dashboard",
+        "Admin Panel",
+        "Real-time Booking"
+      ]
+    },
   ];
 
   return (
@@ -141,25 +165,37 @@ export default function HomeProjects() {
               <h3 className="text-lg font-bold mb-3 group-hover:text-[#c026d3] transition">
                 {p.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">{p.desc}</p>
+              <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
+                {p.desc}
+              </p>
+              {p.features && (
+                <div className="flex flex-wrap gap-1 mt-3">
+                  {p.features.slice(0, 2).map((f, i) => (
+                    <span
+                      key={i}
+                      className="text-[10px] bg-[#c026d3]/20 px-2 py-1 rounded-full border border-[#c026d3]/30"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                  {p.features.length > 2 && (
+                    <span className="text-[10px] text-gray-400">
+                      +{p.features.length - 2} more
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* View All Button */}
+      {/* View All Button - Fixed to lowercase /projects */}
       <div className="text-center mt-14 relative z-10">
         <Link
-          to="/ProjectsPage"
+          to="/projects"
           className="inline-flex items-center gap-2 bg-gradient-to-r from-[#D700FA] via-[#28093B] to-[#6800EE] border-2 border-transparent 
-                hover:from-[#E200FF] hover:via-[#3C0D5A] hover:to-[#7C00FF]  text-white font-semibold px-8 py-3 rounded-full shadow-md hover:opacity-90 transition"
-          py-2
-          px-6
-          lg:px-8
-          font-bold
-          text-base
-          lg:text-lg
-          text-white
+                hover:from-[#E200FF] hover:via-[#3C0D5A] hover:to-[#7C00FF] text-white font-semibold px-8 py-3 rounded-full shadow-md hover:opacity-90 transition"
         >
           View All Projects <ArrowRight className="w-5 h-5" />
         </Link>
@@ -173,12 +209,14 @@ export default function HomeProjects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
           >
             <motion.div
               className="relative bg-[#1a002d] border border-[#b721ff]/30 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto text-white p-8"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Close */}
               <button
@@ -196,9 +234,9 @@ export default function HomeProjects() {
               {/* Screenshot */}
               {selectedProject.screenshots && (
                 <img
-                  src={selectedProject.screenshots}
+                  src={selectedProject.screenshots[0]}
                   alt={`${selectedProject.title} Screenshot`}
-                  className="rounded-2xl w-full h-auto max-h-[700px] object-contain bg-black/40 mb-6"
+                  className="rounded-2xl w-full h-auto max-h-[500px] object-contain bg-black/40 mb-6"
                 />
               )}
 
@@ -223,6 +261,25 @@ export default function HomeProjects() {
                   ))}
                 </div>
               </div>
+
+              {/* Features - Multi-Vendor Highlight */}
+              {selectedProject.features && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold mb-2 text-[#FF6FD8]">
+                    Key Features:
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.features.map((f, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-[#FF6FD8]/10 border border-[#FF6FD8]/20 rounded-full text-sm text-gray-200"
+                      >
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Live Link */}
               {selectedProject.live && (

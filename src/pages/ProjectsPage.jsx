@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
 /**
- * Projects data (you provided)
+ * Projects data with multi-vendor system
  */
 const projects = [
   {
@@ -104,6 +104,41 @@ const projects = [
     screenshots: ["/images/httpschedmed.ma.png"],
     category: "Other",
   },
+  {
+    id: "yourtourproviders",
+    title: "YourTourProviders",
+    desc: "A comprehensive multi-vendor tour and travel management platform connecting travelers with verified tour operators. Features real-time booking, vendor dashboards, admin panel, and secure payment integration.",
+    img: "/personal/listing-home.png",
+    live: "https://www.yourtourproviders.com",
+    tech: [
+      "Next.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB",
+      "Cloudinary",
+      "MERN Stack",
+      "Multi-Vendor System"
+    ],
+    screenshots: [
+      "/personal/listing-home.png",
+      "/personal/admin.png",
+      "/personal/vendor-dashboard.png"
+    ],
+    category: "Application",
+    features: [
+      "Multi-Vendor Marketplace",
+      "Vendor Registration & Verification",
+      "Tour Package Management",
+      "Real-time Booking System",
+      "Vendor Dashboard with Analytics",
+      "Admin Panel for Platform Management",
+      "Secure Payment Integration",
+      "Cloudinary Media Management",
+      "Responsive Design",
+      "Vendor Rating & Reviews"
+    ]
+  },
 ];
 
 const CATEGORIES = [
@@ -168,16 +203,11 @@ export default function ProjectsPage() {
                 Start a Project
               </Link>
             </div>
-            {/* Bottom Curved Bars */}
-            <div className="absolute bottom-[0px] left-0 w-full flex flex-col items-center">
-              <div className="w-[90%] self-center bg-[#A234FD] rounded-t-full h-10 absolute -bottom-10 rotate-180 opacity-25"></div>
-              <div className="w-[80%] self-center bg-[#5D00F7] rounded-t-full h-14 absolute -bottom-14 rotate-180 opacity-25"></div>
-            </div>
 
             {/* small stats */}
             <div className="flex gap-8 mt-6">
               <div>
-                <p className="text-3xl font-bold text-[#FF6FD8]">500+</p>
+                <p className="text-3xl font-bold text-[#FF6FD8]">200+</p>
                 <p className="text-gray-400 text-sm">Projects Delivered</p>
               </div>
               <div>
@@ -204,11 +234,12 @@ export default function ProjectsPage() {
         {/* ambient glows */}
         <div className="pointer-events-none">
           <div className="absolute top-10 right-10 w-40 h-40 bg-pink-500/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 left-10 w-60 h-60 bg-purple-500/10 rounded-full blur-[150px]" />
         </div>
       </header>
 
       {/* FILTER BAR */}
-      <div id="projects" className="mt-36">
+      <div id="projects" className="mt-8">
         <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-28">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             {/* search */}
@@ -323,15 +354,17 @@ export default function ProjectsPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6"
+            onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ y: 20, scale: 0.98 }}
               animate={{ y: 0, scale: 1 }}
               exit={{ y: 20, scale: 0.98 }}
               transition={{ duration: 0.22 }}
-              className="w-full max-w-4xl bg-[#0b0016] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+              className="w-full max-w-4xl bg-[#0b0016] border border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
               role="dialog"
               aria-modal="true"
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4">
@@ -348,14 +381,33 @@ export default function ProjectsPage() {
                         </span>
                       ))}
                     </div>
+
+                    {/* Features - Multi-Vendor Highlight */}
+                    {selected.features && (
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold mb-2 text-[#21d4fd]">
+                          Key Features:
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selected.features.map((f, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 bg-[#FF6FD8]/10 border border-[#FF6FD8]/20 rounded-full text-sm text-gray-200"
+                            >
+                              {f}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-2 flex-shrink-0">
                     <a
                       href={selected.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF6FD8] to-[#21D4FD] rounded-full font-semibold shadow"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF6FD8] to-[#21D4FD] rounded-full font-semibold shadow text-sm"
                     >
                       <Globe size={16} /> Visit Project
                     </a>
@@ -375,12 +427,12 @@ export default function ProjectsPage() {
                   {selected.screenshots.map((s, i) => (
                     <div
                       key={i}
-                      className="rounded-xl overflow-hidden border border-white/6"
+                      className="rounded-xl overflow-hidden border border-white/6 bg-[#070013]"
                     >
                       <img
                         src={s}
                         alt={`${selected.title} screenshot ${i + 1}`}
-                        className="w-full h-72 object-contain bg-[#070013]"
+                        className="w-full h-64 object-contain"
                       />
                     </div>
                   ))}
